@@ -11,6 +11,8 @@ We also used spaql-client to write the sparql requests.
 ##Run the project
 You need Node.js and MongoDB installed and running.
 Then to install the npm dependencies, run 
-	npm install
+
+    npm install
 To run the server of the web application, simply run :
-	node app.js
+
+    node app.js
