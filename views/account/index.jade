@@ -1,0 +1,54 @@
+extends ../../layouts/account
+
+block head
+  title Accueil
+
+block neck
+  link(rel='stylesheet', href='/views/account/index.min.css?#{cacheBreaker}')
+
+block feet
+  script(src='/views/account/index.min.js?#{cacheBreaker}')
+block body
+  h1 Accueil
+  div.row
+    if (film == true)
+      div.col-sm-4
+        div.well.stat
+            h2 Derniers films sortis
+            if(testFilm)
+              p #{testFilm}
+            for film in resultat_film
+              p #{film.movieTitle.value}
+    if (sport == true)
+      div.col-sm-4
+        div.well.stat
+            h2 Actualités sportives
+            for competition in resultat_sport
+              p #{competition.label.value}
+              p le #{competition.date.value}
+    if (jeu == true)
+      div.col-sm-4
+        div.well.stat
+          h2 Nouveautés jeux
+    if (musique == true)
+      div.col-sm-4
+        div.well.stat
+          h2 Nouveautés musicales
+          if(testAlbum)
+            p #{testAlbum}
+          for album in resultat_album
+            p #{album.albumName.value}
+    if (livre == true)
+      div.col-sm-4
+        div.well.stat
+          h2 Livres de l'année 2015
+          for livre in resultat_livre
+            p #{livre.name.value} ( #{livre.auteur.value} )
+    if (culture == true)
+      div.col-sm-4
+        div.well.stat
+          h2 Dernières nouvelles culturelles
+    if (politique == true)
+      div.col-sm-4
+        div.well.stat
+          h2 Dernières nouvelles politiques

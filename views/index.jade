@@ -1,0 +1,18 @@
+extends ../layouts/default
+
+block head
+  title Drywall is Running
+
+block neck
+  link(rel='stylesheet', href='/views/index.min.css?#{cacheBreaker}')
+
+block body
+  div.jumbotron
+    h1 Bienvenue!
+    p.lead
+        | F2B206 - Ingénierie des connaissances et web sémantique
+    div
+      a.btn.btn-primary.btn-lg(href='/signup/') Inscription
+      | &nbsp;ou&nbsp;
+      a.btn.btn-warning.btn-lg(href='/login/forgot/') Réinitialisation du mot de passe
+    div.clearfix

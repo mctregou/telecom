@@ -1,0 +1,115 @@
+extends ../../../layouts/account
+
+block head
+  title Préférences
+
+block neck
+  link(rel='stylesheet', href='/views/account/index.min.css?#{cacheBreaker}')
+
+block feet
+  script(src='/views/account/preferences/index.min.js?#{cacheBreaker}')
+block body
+
+  div.row
+  div#preferences
+    div.row
+      div.col-sm-4
+        h2  Points d'intêrets
+        div.well.stat
+          ul.nav
+           div.alerts
+               if (success)
+                 div.alert.alert-info.alert-dismissable
+                 button.close(type='button', data-dismiss='alert') &times;
+                 | Changes have been saved.
+             p
+               div.form-group
+               if (film==false)
+                  input(type="checkbox", name='film', id=key)
+                  label Film
+               else
+                  input(type="checkbox", name='film', id=key, checked)
+                  label Film
+             p
+               div.form-group
+               if (musique==false)
+                  input(type="checkbox", name='musique', id=key)
+                  label Musique
+               else
+                  input(type="checkbox", name='musique', id=key, checked)
+                  label Musique
+
+             p
+               div.form-group
+                 if (livre==false)
+                   input(type="checkbox", name='livre', id=key)
+                   label Livre
+                 else
+                   input(type="checkbox", name='livre', id=key, checked)
+                   label Livre
+             p
+               div.form-group
+                 if (sport==false)
+                    input(type="checkbox", name='sport', id=key)
+                    label Sport
+                 else
+                    input(type="checkbox", name='sport', id=key, checked)
+                    label Sport
+             p
+               div.form-group
+                 if (jeu==false)
+                   input(type="checkbox", name='jeu', id=key)
+                   label Jeux vidéos
+                 else
+                   input(type="checkbox", name='jeu', id=key, checked)
+                   label Jeux vidéos
+             p
+               div.form-group
+                 if (culture==false)
+                   input(type="checkbox", name='culture', id=key)
+                   label Culture
+                 else
+                   input(type="checkbox", name='culture', id=key, checked)
+                   label Culture
+              p
+               div.form-group
+                 if (politique==false)
+                   input(type="checkbox", name='politique', id=key)
+                   label Politique
+                 else
+                   input(type="checkbox", name='politique', id=key, checked)
+                   label Politique
+
+      div.col-sm-4
+        h2 Langues
+        div.well.stat
+          ul.nav
+           select
+             - var selected = (langue? langue: 'Français') //variable par défaut
+             - var languages = ['Français', 'English', 'Deutsch'] //toutes les valeurs
+             option() #{selected}
+             for lang in languages
+               if (lang != selected)
+                 option() #{lang}
+      div.col-sm-4
+        h2 Pays
+        div.well.stat
+          ul.nav
+           select
+             - var selected = (country? country : 'France') //variable par défaut
+             - var countries = ['France', 'Angleterre', 'Allemagne'] //toutes les valeurs
+             option() #{selected}
+             for country in countries
+               if (country != selected)
+                 option() #{country}
+     div.row
+       div.col-sm-4
+       div.col-sm-4
+         div.form-group.preferencesButton
+         div#preference
+           button.btn.btn-primary.btn-update-preferences(type='button') Enregistrer les modifications
+
+
+    script(type='text/template', id='data-account') !{data.account}
+    script(type='text/template', id='data-user') !{data.user}
+
